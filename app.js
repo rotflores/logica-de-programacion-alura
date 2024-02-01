@@ -1,8 +1,8 @@
-let titulo = document.querySelector("h1");
-titulo.innerHTML = "juego del numero secreto";
-let parrafo = document.querySelector("p");
-parrafo.innerHTML = "Escoge un numero del 1 - 100";
-
-function intentarAdivinar {
-    
+function asignarTextos(elemento, texto){
+    let elementoHTML = document.querySelector(elemento);
+    elementoHTML.innerHTML = texto;
 }
+
+asignarTextos("h1" , "Juego de adivinar el numero");
+asignarTextos("p", "Escoge un numero del 1 al 10");
+
