@@ -7,9 +7,6 @@ function asignarTextos(elemento, texto){
     elementoHTML.innerHTML = texto;
 }
 
-asignarTextos("h1" , "Juego de adivinar el numero");
-asignarTextos("p", "Escoge un numero del 1 al 100");
-
 function generarNumero(){ 
     return Math.floor(Math.random()*100)+1;
 }
@@ -32,6 +29,23 @@ function intentarAdivinar(){
     return
 }
 
+function parametrosDelJuego() {
+asignarTextos("h1" , "Juego de adivinar el numero");
+asignarTextos("p", "Escoge un numero del 1 al 100");
+intentos = 1;
+}
+
+
 function limpiar() {
     document.getElementById("intento").value = "";
 }
+
+parametrosDelJuego();
+
+function reinicarJuego() {
+    parametrosDelJuego();
+    limpiar();
+    generarNumero;
+    document.getElementById("reinciar").setAttribute('disabled', 'true');
+}
+
