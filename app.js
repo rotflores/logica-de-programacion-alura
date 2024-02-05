@@ -19,15 +19,19 @@ function intentarAdivinar(){
     console.log(numeroSecreto);
     if (inputUsuario == numeroSecreto){
         asignarTextos("p", `felicidades! has atinado al numero en ${intentos} ${(intentos == 1) ? "intento" : "intentos"}`);
-        document.getElementById("reinciar").removeAttribute(`disabled`);
+        document.getElementById("reinciar").removeAttribute('disabled');
     } else {
         if (inputUsuario > numeroSecreto) {
             asignarTextos("p", "intenta con un numero mas chico");
         } else {
             asignarTextos ("p", "intenta con un numero mas grande");
         }
+        intentos++;
+        limpiar();
     }
-    intentos++;
     return
 }
 
+function limpiar() {
+    document.getElementById("intento").value = "";
+}
