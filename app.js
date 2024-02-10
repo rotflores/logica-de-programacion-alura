@@ -1,19 +1,33 @@
-let numeroSecreto = generarNumero();
-let intentos = 1;
-console.log(numeroSecreto);
-console.log(intentos);
+let numeroSecreto = 0;
+let intentos = 0;
+let listaDeNumeros = [];
+let maximoNumero = 100;
+
 function asignarTextos(elemento, texto){
     let elementoHTML = document.querySelector(elemento);
     elementoHTML.innerHTML = texto;
 }
 
 function generarNumero(){ 
-    return Math.floor(Math.random()*100)+1;
+    let numeroGenerado = Math.floor(Math.random()*maximoNumero)+1;
+    console.log(numeroGenerado);
+    console.log(listaDeNumeros);
+
+    if (listaDeNumeros.length == maximoNumero){
+        asignarTextos("p", 'Todos los numeros han sido sorteados');
+    } else {
+        if(listaDeNumeros.includes(numeroGenerado)){
+        return generarNumero()
+    } else {
+        listaDeNumeros.push(numeroGenerado);
+        return numeroGenerado;
+    }
+}
+    
 }
 
 function intentarAdivinar(){
     let inputUsuario = parseInt(document.getElementById("intento").value);
-    console.log(numeroSecreto);
     if (inputUsuario == numeroSecreto){
         asignarTextos("p", `felicidades! has atinado al numero en ${intentos} ${(intentos == 1) ? "intento" : "intentos"}`);
         document.getElementById("reinciar").removeAttribute('disabled');
@@ -31,7 +45,8 @@ function intentarAdivinar(){
 
 function parametrosDelJuego() {
 asignarTextos("h1" , "Juego de adivinar el numero");
-asignarTextos("p", "Escoge un numero del 1 al 100");
+asignarTextos("p", `Escoge un numero del 1 al ${maximoNumero}`);
+numeroSecreto = generarNumero();
 intentos = 1;
 }
 
@@ -45,7 +60,5 @@ parametrosDelJuego();
 function reinicarJuego() {
     parametrosDelJuego();
     limpiar();
-    generarNumero;
     document.getElementById("reinciar").setAttribute('disabled', 'true');
 }
-
